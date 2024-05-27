@@ -1,4 +1,4 @@
-# Astro Starter Kit: Minimal
+# Astro Form example
 
 ```sh
 npm create astro@latest -- --template minimal
@@ -7,6 +7,8 @@ npm create astro@latest -- --template minimal
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
 [![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+
+From the latest minimal template example, this codebase contains the implementation of a minimal form, one done in Astro, following the [astro form recipe](https://docs.astro.build/en/recipes/build-forms/), and another done in react.
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
@@ -18,8 +20,11 @@ Inside of your Astro project, you'll see the following folders and files:
 /
 ├── public/
 ├── src/
+│   ├── components/
 │   └── pages/
-│       └── index.astro
+│       ├── index.astro
+|       ├── post
+|       └── api
 └── package.json
 ```
 
@@ -45,3 +50,9 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## 🤌 Purpose
+
+The purpose of this repo, is to understand deeply the difference between implementing the same feature with only astro components, or with a react component and the island feature.
+
+It also contain a minimal example of and endpoint and its use.
