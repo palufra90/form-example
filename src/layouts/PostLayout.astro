@@ -1,0 +1,21 @@
+---
+import GenericLayout from "./GenericLayout.astro";
+import type { MarkdownLayoutProps } from "astro";
+
+type Props = MarkdownLayoutProps<{
+  // Define frontmatter props here
+  title: string;
+  author: string;
+  pubDate: string;
+}>;
+
+// Now, `frontmatter` and other Markdown layout properties
+// are accessible with type safety
+const { frontmatter } = Astro.props;
+---
+
+<GenericLayout title={frontmatter.title}>
+  <h1>{frontmatter.title} by {frontmatter.author}</h1>
+  <slot />
+  <p>Written on: {frontmatter.pubDate}</p>
+</GenericLayout>
