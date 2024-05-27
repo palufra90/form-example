@@ -1,0 +1,28 @@
+---
+import { formState } from "@/components/form.store";
+import Input from "./Input";
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    formState.set({
+      userName: data.get("userName")?.toString() || "",
+      email: data.get("email")?.toString() || "",
+    });
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+
+<form method="POST" class="flex flex-col gap-4">
+  <Input label="Username" required={true} name="userName" />
+  <Input label="Email" required={true} name="email" type="email" />
+  <Input label="Password" required={true} name="password" type="password" />
+  <button
+    class="bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400"
+    >Submit</button
+  >
+</form>

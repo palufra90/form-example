@@ -1,0 +1,38 @@
+---
+import HeaderLink from "@/components/HeaderLink.astro";
+import "@/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <header
+      class="relative z-50 w-full flex-none text-sm font-semibold leading-6 text-slate-900"
+    >
+      <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div
+          class="flex justify-end gap-x-4 h-14 max-w-screen-2xl items-center relative py-[2.125rem]"
+        >
+          <div class="absolute inset-x-0 bottom-0 h-px bg-slate-900/5"></div>
+          <HeaderLink href="/">Home</HeaderLink>
+          <HeaderLink href="/blog">Blog</HeaderLink>
+          <HeaderLink href="/about">About</HeaderLink>
+        </div>
+      </nav>
+    </header>
+    <main class="w-100 min-h-screen max-h-full mt-20">
+      <slot />
+    </main>
+    <footer class="bg-black text-white py-4 mt-10">
+      <div>
+        <p class="text-center">© 2024 Astro</p>
+      </div>
+    </footer>
+  </body>
+</html>

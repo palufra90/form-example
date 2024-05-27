@@ -1,0 +1,59 @@
+---
+import FormAstro from "@/components/FormAstro.astro";
+import FormReact from "@/components/FormReact";
+import GenericLayout from "@/layouts/GenericLayout.astro";
+import FormState from "@/components/FormState.astro";
+import FormStateReact from "@/components/FormState";
+
+let userName = "";
+let email = "";
+
+if (Astro.request.method === "POST") {
+  try {
+    console.log(`**** submitting astro form *****`);
+    const data = await Astro.request.formData();
+    userName = data.get("name")?.toString() || "";
+    email = data.get("email")?.toString() || "";
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+
+<GenericLayout>
+  <h1>
+    <a href="/">Astro form example</a>
+  </h1>
+
+  <h3 class="mt-6">Astro example</h3>
+  <p>
+    This is a simple example of a form built with Astro. It uses a POST method
+    to get the data.
+  </p>
+  <div class="grid grid-cols-2">
+    <div class="flex items-start justify-start mt-4">
+      <FormAstro />
+    </div>
+    <div class="mt-4">
+      <FormState userName={userName} email={email} />
+    </div>
+  </div>
+
+  <div class="mt-10"></div>
+  <h3 class="mt-6">React example</h3>
+  <p>
+    This is a simple example of a form built with React. It uses nanostore to
+    update the form state.
+  </p>
+
+  <div class="grid grid-cols-2">
+    <div class="flex items-start justify-start mt-4">
+      <FormReact client:load />
+    </div>
+    <div class="my-4">
+      <FormStateReact client:load />
+    </div>
+  </div>
+</GenericLayout>

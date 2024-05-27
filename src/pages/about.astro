@@ -1,0 +1,16 @@
+---
+import GenericLayout from "@/layouts/GenericLayout.astro";
+import { GET } from "@api/colors";
+
+const response = await GET();
+const { colors } = await response.json();
+console.log(colors);
+---
+
+<GenericLayout>
+  <h1>
+    <a href="/">Astro example</a>
+  </h1>
+  My favourite color is:
+  <span style={{ color: colors[0] }}>{colors[0]}</span>
+</GenericLayout>
