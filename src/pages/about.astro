@@ -12,5 +12,11 @@ console.log(colors);
     <a href="/">Astro example</a>
   </h1>
   My favourite color is:
-  <span style={{ color: colors[0] }}>{colors[0]}</span>
+  <span style={{ color: colors[3] }}>{colors[3]}</span>
+  <br />
+  <br />
+  <span>Here are some other colors:</span>
+  <ul>
+    {colors.map((color: string) => <li style={{ color }}>{color}</li>)}
+  </ul>
 </GenericLayout>
