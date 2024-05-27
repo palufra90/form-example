@@ -4,6 +4,22 @@ import FormReact from "@/components/FormReact";
 import GenericLayout from "@/layouts/GenericLayout.astro";
 import FormState from "@/components/FormState.astro";
 import FormStateReact from "@/components/FormState";
+
+let userName = "";
+let email = "";
+
+if (Astro.request.method === "POST") {
+  try {
+    console.log(`**** submitting astro form *****`);
+    const data = await Astro.request.formData();
+    userName = data.get("userName")?.toString() || "";
+    email = data.get("email")?.toString() || "";
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
 ---
 
 <GenericLayout>
@@ -21,7 +37,7 @@ import FormStateReact from "@/components/FormState";
       <FormAstro />
     </div>
     <div class="mt-4">
-      <FormState />
+      <FormState userName={userName} email={email} />
     </div>
   </div>
 

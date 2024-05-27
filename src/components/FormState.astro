@@ -1,17 +1,5 @@
 ---
-import { formState } from "./form.store";
-
-let userName = "";
-let email = "";
-if (Astro.request.method === "POST") {
-  try {
-    ({ userName, email } = formState.get());
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-}
+const { userName, email } = Astro.props;
 ---
 
 <h4>Form state</h4>

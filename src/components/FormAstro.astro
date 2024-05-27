@@ -1,20 +1,5 @@
 ---
-import { formState } from "@/components/form.store";
 import Input from "./Input";
-
-if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData();
-    formState.set({
-      userName: data.get("userName")?.toString() || "",
-      email: data.get("email")?.toString() || "",
-    });
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-}
 ---
 
 <form method="POST" class="flex flex-col gap-4">
