@@ -1,5 +1,19 @@
 ---
-const { userName, email } = Astro.props;
+let userName = "";
+let email = "";
+
+if (Astro.request.method === "POST") {
+  try {
+    console.log(`**** submitting astro form *****`);
+    const data = await Astro.request.formData();
+    userName = data.get("userName")?.toString() || "";
+    email = data.get("email")?.toString() || "";
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
 ---
 
 <h4>Form state</h4>
